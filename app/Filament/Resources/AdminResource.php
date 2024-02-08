@@ -36,7 +36,8 @@ class AdminResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->hidden(auth()->user()->role == AdminRoleEnum::SuperAdmin),
 
                 Forms\Components\TextInput::make('email')
                     ->email()
